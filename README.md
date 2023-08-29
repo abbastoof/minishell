@@ -2,7 +2,7 @@
 This project is a minimal shell implementation in C, supporting various built-in functions like `cd`, `echo`, `env`, `exit`, `export`, `pwd`, and `unset`, as well as the ability to execute other commands, handle signals, and manage environment variables. The project includes lexer and parser modules to process and execute commands, a tree structure to represent the commands, and several utility functions.
 
 ## First thing first
-[A quick bash introduction](note/bash_intro.md)
+[A quick introduction to bash](note/bash_intro.md)
 
 ## Envirenment variables  
 Use linked list of structure to store envirenment variables. We divided the Envirenment variables to keys and values.
