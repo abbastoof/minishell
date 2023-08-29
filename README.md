@@ -6,6 +6,7 @@ This project is a minimal shell implementation in C, supporting various built-in
 
 ## Envirenment variables  
 Use linked list of structure to store envirenment variables. We divided the Envirenment variables to keys and values.
+Keep it in mind to turn the env linked list to a char **ptr before the execution in exec command part.
 
 ## Lexical analysis  
 Take user input and store it into a linked-list as "tokens". Each "token" contains a "token value"(string) and a "token type"(int).
@@ -34,8 +35,9 @@ When there is more then 1 pipe, the first pipe will be connected to the second p
 The second pipe will be connected to the third pipe's left side. And so on...
 If there is redirection token, we will create a linked-list to store all redirection types and it's filename inside.  
 All the "WORD" token directly after the redirection token will be the file name, the other WORDs after the first WORD will all be put into the command's argument list.  
-(ex: `echo > a hello > b` becomes: `["echo", "hello"]/(REDIR_OUT)"a"->(REDIR_OUT)"b"` and `> a echo hello > b` will produce the same element as above.  
-
+(ex: `echo > a hello > b` becomes: `["echo", "hello"]/(TOKEN_OUTPUT)"a"->(TOKEN_OUTPUT)"b"` and `> a echo hello > b` will produce the same element as above.  
+In our tree the redirectors are kept in a linked list.
+Be careful to check and run the heredocs during in the Parser.
 So the command: `echo hello > file1 | cat file2 | grep a | wc > outfile1 -l > out1 >out2 ` will produce a tree like:
 ```
                             PIPE
