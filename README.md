@@ -8,7 +8,6 @@ This project is a minimal shell implementation in C, supporting various built-in
 - Redirections (input, output, append) and pipes.
 - Environment variable expansion.
 - Syntax error handling.
-- Command history.
 
 ## Directory Structure
 ```
